@@ -15,3 +15,8 @@
 | 💄 style | css |
 | 🙈 gitfix | gitignore 수정 |
 | 🔨script | package.json 변경(npm 설치 등) |
+
+<br>
+
+### 🚀 트러블 슈팅
+[fetch] [TMDB API ➡️ 자바스크립트로 **어떻게** 가져오지?](https://izzie-note.tistory.com/99)
