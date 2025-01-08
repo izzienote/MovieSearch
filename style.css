@@ -1,0 +1,13 @@
+.movie-card{
+  border: solid 1px grey;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#movieName {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 8px;
+}
