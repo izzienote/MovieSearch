@@ -1,13 +1,33 @@
+body{
+  margin: none;
+}
+
 .movie-card{
   border: solid 1px grey;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 250px;
 }
 
 #movieName {
   font-weight: bold;
   font-size: 1.2em;
   margin: 8px;
+}
+
+#searchArea {
+  background-color: rgb(14, 14, 44);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+input {
+  width: 60%;
+  height: 25px;
 }

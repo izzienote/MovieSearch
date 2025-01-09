@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>TMDB 데이터 가져오기</h1>
+  <nav id="searchArea">
+    <h1>영화 검색</h1>
+    <input id="inputMovieName" type="text" placeholder="영화를 검색하세요...">
+    <div>북마크 보기</div>
+  </nav>
+
 
   <!-- 예시 카드 -->
-  <div class="movie-card">
+   <div id="movieCard"></div>
+  <!-- <div class="movie-card">
     <div id="movieImage">
       <img src="" alt="이미지가 없습니다">
     </div>
     <div id="movieName">영화 이름</div>
     <div id="movieRate">평점 : 0.00</div>
-  </div>
+  </div> -->
 
   <script src="/script.js"></script>
 </body>
+
 </html>

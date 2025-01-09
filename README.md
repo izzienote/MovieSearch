@@ -20,3 +20,5 @@
 
 ### 🚀 트러블 슈팅
 [fetch] [TMDB API ➡️ 자바스크립트로 **어떻게** 가져오지?](https://izzie-note.tistory.com/99)
+[Image] [img 주소가 왜 "/asdklfjasldkf.jpg" 인거지?]
+(https://izzie-note.tistory.com/101)
