@@ -7,30 +7,30 @@ const options = {
 };
 
 
-const movieCard = document.getElementById("movieCard");
-console.log(movieCard);
-
+const movieContainer = document.getElementById("container");
 
 fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko&page=1&sort_by=popularity.desc', options)
   .then(res => res.json()) //1단계: 응답을 JSON으로 변환
   .then(res => {
-    console.log(res.results);
+    // console.log(res.results);
     const results = res.results;
 
-    results.forEach(movie => {
-      movieCard.innerHTML += `<div class="movie-card">
-    <div id="movieImage">
-      <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="이미지를 찾을 수 없습니다">
+    //새로운 div 생성
+
+    results.forEach((movie, index) => {
+      const movieItem = document.createElement('div');
+      movieItem.className = 'movie-card';
+      movieItem.innerHTML = `
+    <div>
+      <img class="movie-image" src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="이미지를 찾을 수 없습니다">
     </div>
-    <div id="movieName">${movie.title}</div>
-    <div id="movieRate">평점 : ${movie.vote_average}</div>
-  </div>`;
-    });
-    console.log(res.results[0].title);
-    movieName.innerHTML = res.results[0].title;
-    console.log(res.results[0].id);
-    console.log(res.results[0].vote_average);
-    console.log(res.results[0].poster_path);
+    <div class="movie-name">${movie.title}</div>
+    <div class="movie-rate">평점 : ${movie.vote_average}</div>
+    `;
+    movieContainer.appendChild(movieItem);
+  });
+
+
 
   })  //2단계: 변환된 JSON 데이터 출력
   .catch(err => console.error(err));  //3단계: 에러 처리
