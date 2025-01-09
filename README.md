@@ -22,3 +22,5 @@
 [fetch] [TMDB API ➡️ 자바스크립트로 **어떻게** 가져오지?](https://izzie-note.tistory.com/99)
 
 [Image] [img 주소가 왜 "/asdklfjasldkf.jpg" 인거지?](https://izzie-note.tistory.com/101)
+
+[Css_Grid 반응형] [부트캠프만 써봤는데, grid는 뭐지? flexbox?](https://izzie-note.tistory.com/102)
