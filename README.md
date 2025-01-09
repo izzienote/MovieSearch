@@ -23,4 +23,4 @@
 
 [Image] [img 주소가 왜 "/asdklfjasldkf.jpg" 인거지?](https://izzie-note.tistory.com/101)
 
-[Css_Grid 반응형] [부트캠프만 써봤는데, grid는 뭐지? flexbox?](https://izzie-note.tistory.com/102)
+[Css_Grid 반응형] [❓grid 안으로 카드가 왜 안들어가지, createElements랑 append로 다시 바꿔보기](https://izzie-note.tistory.com/102)
