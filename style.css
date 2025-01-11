@@ -1,10 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+.hide{
+  display: none;
+}
+
 body {
   margin: 0px;
   background-color: hsl(0, 0%, 94%);
+  font-family: "Gowun Dodum", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-main {
-  padding-left: 50px;
+ul {
+  margin: 50px;
 }
 
 #container {
@@ -27,6 +36,7 @@ main {
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  text-align: center;
 }
 
 .movie-card:hover {
@@ -35,6 +45,7 @@ main {
 
 .movie-image {
   border-radius: 10px;
+  width: 100%;
 }
 
 .movie-name {
@@ -55,25 +66,19 @@ main {
 
 input {
   width: 60%;
-  height: 25px;
+  height: 40px;
+  border: solid 3px lightblue;
+  border-radius: 20px;
+  padding-left: 15px;
+  font-size: 1rem;
 }
 
-/* 연습용 박스 색깔 */
-.c1 {
-  background-color: aquamarine;
+.bookmark-style {
+  margin-top: 20px;
 }
-.c2 {
-  background-color: rgb(140, 117, 172);
-}
-.c3 {
-  background-color: rgb(201, 226, 190);
-}
-.c4 {
-  background-color: rgb(255, 236, 127);
-}
-.c5 {
-  background-color: rgb(255, 185, 127);
-}
-.c6 {
-  background-color: rgb(127, 221, 255);
+
+.no_dot {
+
+  list-style-type: none;
+
 }
