@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
-.hide{
+.hide {
   display: none;
 }
 
@@ -21,13 +21,10 @@ ul {
   grid-template-columns: repeat(auto-fit, 200px);
   grid-auto-rows: 390px;
   /* row가 몇개 생길지 모를때, 세로 사이즈는 350px 로 고정해주세요! 라는 의미 */
-  grid-gap : 1rem;
+  grid-gap: 1rem;
 }
 
 .movie-card {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -78,7 +75,75 @@ input {
 }
 
 .no_dot {
-
   list-style-type: none;
+}
 
+/* 모달 스타일 */
+.hide {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.modal-contents {
+  /* 중앙정렬 start */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* 중앙정렬 end */
+  border: 1px solid rgb(163, 176, 180);
+  border-radius: 10px;
+  width: 400px;
+  height: 700px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  /* y축 스크롤바 나타나도록 설정 start */
+  max-height: 90vh;
+  overflow-y: auto;
+  /* y축 스크롤바 나타나도록 설정 end */
+}
+
+.bookmarkBtn-style {
+  border: none;
+  border-radius: 5px;
+  background-color: gray;
+  width: 100%;
+  height: 30px;
+  color: white;
+  margin-top: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  color: red;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1em;
+  margin: 10px;
+  font-size: 1.5em;
+}
+
+.close-btn:hover {
+  scale: 1.1;
+  color: black;
+}
+
+.image-in-modal {
+  margin-top: 25px;
+  width: 100%;
+  height: 100%;
 }
