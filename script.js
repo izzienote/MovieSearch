@@ -1,4 +1,6 @@
 // (0-1)페치에 중복되는 값 위로 빼놓기
+const tmdbUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc';
+
 const options = {
   method: 'GET',
   headers: {
@@ -19,26 +21,41 @@ const myPoster = document.querySelector("#myPoster");
 // (0-4) 전역 변수 선언 _ fetch한 값을 담는 변수
 let movieData = [];
 // (0-5) 북마크 상수 선언
-const addBookmarkBtn = document.querySelector(".add-bookmark");
+const addBookmarkBtn = document.querySelector("#add-bookmark");
+const deleteBookmarkBtn = document.querySelector("#delete-bookmark");
 const seeBookmarkBtn = document.querySelector(".checked-bookmark");
 let bookmarkedMovie = JSON.parse(localStorage.getItem('bookmarkItem')) || [];
 //JSON.parse : 결과값을 객체로 반환
 
 
-
-
+// ----------------------fecth 변경 전-------------------------
 // (1)가져오는 fecth를 함수로 지정  _____ Before
-function fecthData() {
-  fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc', options)
-    .then(res => res.json()) //응답을 JSON으로 변환
-    .then(res => {
-      // console.log(res.results); //콘솔창 확인용
-      const results = res.results;
-      movieData = res.results;  //전역 변수에 값 넣어줘야 find로 찾을때 값을 찾을 수 있음
-      displayPosts(results);
-    })
-};
+// function fecthData() {
+//   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc', options)
+//     .then(res => res.json()) //응답을 JSON으로 변환
+//     .then(res => {
+//       // console.log(res.results); //콘솔창 확인용
+//       const results = res.results;
+//       movieData = res.results;  //전역 변수에 값 넣어줘야 find로 찾을때 값을 찾을 수 있음
+//       displayPosts(results);
+//     })
+// };
 
+// ----------------------fecth 변경 후-------------------------
+// (1)가져오는 fecth를 함수로 지정 (async/await로 수정완료)
+async function fecthData() {
+
+  try {
+    const res = await fetch(tmdbUrl, options)
+    const res1 = await res.json()
+    const results = res1.results;
+    movieData = res1.results;  //전역 변수에 값 넣어줘야 find로 찾을때 값을 찾을 수 있음
+    displayPosts(results);
+  } catch (error) {
+    alert("에러가 발생했습니다!");
+  }
+};
+ // -----------------------------------------------------------
 
 // (2)포스팅 리스팅하는 fecth
 function displayPosts(results) {
@@ -57,7 +74,7 @@ function displayPosts(results) {
   <li class="movie-name">${movie.title}</li>
   <h6 class="movie-name hide">${movie.original_title}</h6>
   <li class="movie-rate">평점⭐️ : ${movie.vote_average}</li>
-  <li class="">${movie.id}</li>
+  <li class="hide">${movie.id}</li>
   `;
 
     movieContainer.appendChild(movieItem);
@@ -72,18 +89,39 @@ searchMovie.addEventListener("change", function () {
   const keyword = searchMovie.value;
 
   //데이터를 다시 페치해서 필터링된 결과 표시
-  fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc', options)
-    .then(res => res.json()) //응답을 JSON으로 변환
-    .then(res => {
-      const results = res.results;
+  // ----------------------fecth 변경 전-------------------------
+  // fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc', options)
+  //   .then(res => res.json()) //응답을 JSON으로 변환
+  //   .then(res1 => {
+  //     const results = res1.results;
 
+  //     // 키워드에 맞는 영화 필터링하기
+  //     const filteredPosts = results.filter(function (movie) {
+  //       return movie.title.includes(keyword);
+  //     });
+  //     //필터링된 결과표시
+  //     displayPosts(filteredPosts);
+  //   })
+
+  // ----------------------fecth 변경 후-------------------------
+  async function getFilteredData() {
+    try {
+      const res = await fetch(tmdbUrl, options)
+      const res1 = await res.json()
+      const results = res1.results;
       // 키워드에 맞는 영화 필터링하기
       const filteredPosts = results.filter(function (movie) {
         return movie.title.includes(keyword);
       });
       //필터링된 결과표시
       displayPosts(filteredPosts);
-    })
+    } catch (error) {
+      alert("에러가 발생했습니다!");
+    }
+
+  };
+  getFilteredData();
+
 });
 
 //(4) 클릭되면-> 상세페이지를 보여줘
@@ -152,13 +190,22 @@ function addBookmark(movieId) {
     alert("이미 북마크에 추가된 영화입니다. 다른 영화를 선택해주세요");
   }
 };
-// ------------------------------------------------------------
 
-// (7-2) 북마크 get 함수 () ___ 값이 잘 들어왔나 확인용
-function getBookmark() {
-  console.log(localStorage.getItem('bookmarkItem'));
-  alert("북마크 보기 버튼이 클릭되었습니다");
+// ------------------------------------------------------------
+// (7-2) 북마크 delete 함수 ()
+function deleteBookmark(movieId) {
+  movieId = Number(movieId);
+  console.lot(movieId);
+
+  if (bookmarkedMovie.includes(movieId)) {
+    localStorage.removeItem('bookmarkItem');
+    alert("북마크 취소 성공!");
+  }
+  else {
+    alert("추가된 북마크에서 취소할 북마크가 없습니다");
+  }
 };
+
 // ------------------------------------------------------------
 
 // (7-3) 북마크 show 함수 (북마크된 영화만 다시 리스팅)
@@ -173,9 +220,8 @@ function showBookmark() {
 }
 // ------------------------------------------------------------
 
-// (8) 북마크된 포스트 보기
+// (8) 북마크된 포스트 리스트 만들기
 function displayBookmarkedPosts(movieId) {
-  // 기존 콘텐츠 지우기****초기화
   movieContainer.innerHTML = '';
 
   movieId.forEach((movie) => {
