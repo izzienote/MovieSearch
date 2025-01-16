@@ -126,7 +126,7 @@ input {
   /* 모달 스크롤 숨기기 end*/
 }
 
-.add-bookmark {
+.style-bookmark {
   border: none;
   border-radius: 5px;
   background-color:rgb(66, 129, 105);
@@ -136,7 +136,7 @@ input {
   margin-top: 20px;
 }
 
-.add-bookmark:hover {
+button:hover {
   cursor: pointer;
   background-color: rgb(28, 65, 52);
 }
