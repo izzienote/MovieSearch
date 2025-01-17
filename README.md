@@ -18,6 +18,29 @@
 
 <br>
 
+### 영화 검색사이트 (TMDB API 사용)
+기능 구현 리스트
+**1) fetch로 가져온 api주소를 활용하여 화면에 배치**
+<img width="1434" alt="스크린샷 2025-01-17 오전 10 38 16" src="https://github.com/user-attachments/assets/e5d0de71-a7df-46d8-8b22-1f8cecca936c" />
+
+
+**2) 영화 클릭 시, modal로 상세페이지 정보 제공**
+<img width="1435" alt="스크린샷 2025-01-17 오전 10 38 39" src="https://github.com/user-attachments/assets/285420a8-ddff-42fe-a414-c35d3c8da085" />
+
+
+**3) 글자 입력 시, 검색어가 포함된 결과값 보여주기**
+<img width="1432" alt="스크린샷 2025-01-17 오전 10 43 45" src="https://github.com/user-attachments/assets/fb38cb72-9d77-4d0e-812a-efb3b455e4d5" />
+
+
+**4) 로컬스토리지 활용(북마크 추가 기능)**
+<img width="1424" alt="스크린샷 2025-01-17 오전 10 38 51" src="https://github.com/user-attachments/assets/37a81839-c600-481c-8bc9-a7084aea59f5" />
+
+
+**5) 추가된 북마크 리스트 보기**
+<img width="1451" alt="스크린샷 2025-01-17 오전 10 39 01" src="https://github.com/user-attachments/assets/2b88f76e-9e87-4d88-9471-d87e9683c142" />
+
+
+
 ### 🚀 트러블 슈팅
 [fetch] [TMDB API ➡️ 자바스크립트로 **어떻게** 가져오지?](https://izzie-note.tistory.com/99)
 
