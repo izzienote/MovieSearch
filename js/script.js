@@ -1,13 +1,10 @@
-// (0-1)페치에 중복되는 값 위로 빼놓기
-const tmdbUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc';
+import {tmdbUrl, options} from './api.js'
+import {modal, modalOpenBtn, modalCloseBtn, toggleModal } from './ui.js'
 
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjBmMDIwYjRmYjFiZGQzMjU1YzRmNzA3OWNjOGNmZSIsIm5iZiI6MTczNjMxMzEzOS4yOTEwMDAxLCJzdWIiOiI2NzdlMDkzMzYwMWFjZmU3YmQ0ZTViNzMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.TQLneg9wO2U9u3pj_72s1zU9GcNYq6_9SCB8d9Wxqx0'
-  }
-};
+
+// (0-1)페치에 중복되는 값 위로 빼놓기
+//<---------- api.js : (tmdbUrl, options)---------->
+
 // (0-2) const 상수 선언 _ html이랑 자바스크립트 연결
 const movieContainer = document.getElementById("container");
 const searchMovie = document.getElementById("searchMovie");
@@ -27,19 +24,6 @@ const seeBookmarkBtn = document.querySelector(".checked-bookmark");
 let bookmarkedMovie = JSON.parse(localStorage.getItem('bookmarkItem')) || [];
 //JSON.parse : 결과값을 객체로 반환
 
-
-// ----------------------fecth 변경 전-------------------------
-// (1)가져오는 fecth를 함수로 지정  _____ Before
-// function fecthData() {
-//   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc', options)
-//     .then(res => res.json()) //응답을 JSON으로 변환
-//     .then(res => {
-//       // console.log(res.results); //콘솔창 확인용
-//       const results = res.results;
-//       movieData = res.results;  //전역 변수에 값 넣어줘야 find로 찾을때 값을 찾을 수 있음
-//       displayPosts(results);
-//     })
-// };
 
 // ----------------------fecth 변경 후-------------------------
 // (1)가져오는 fecth를 함수로 지정 (async/await로 수정완료)
@@ -89,24 +73,11 @@ searchMovie.addEventListener("change", function () {
   const keyword = searchMovie.value;
 
   //데이터를 다시 페치해서 필터링된 결과 표시
-  // ----------------------fecth 변경 전-------------------------
-  // fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KR&page=1&sort_by=popularity.desc', options)
-  //   .then(res => res.json()) //응답을 JSON으로 변환
-  //   .then(res1 => {
-  //     const results = res1.results;
-
-  //     // 키워드에 맞는 영화 필터링하기
-  //     const filteredPosts = results.filter(function (movie) {
-  //       return movie.title.includes(keyword);
-  //     });
-  //     //필터링된 결과표시
-  //     displayPosts(filteredPosts);
-  //   })
-
   // ----------------------fecth 변경 후-------------------------
   async function getFilteredData() {
     try {
       const res = await fetch(tmdbUrl, options)
+      console.log(res);
       const res1 = await res.json()
       const results = res1.results;
       // 키워드에 맞는 영화 필터링하기
@@ -118,7 +89,6 @@ searchMovie.addEventListener("change", function () {
     } catch (error) {
       alert("에러가 발생했습니다!");
     }
-
   };
   getFilteredData();
 
@@ -157,12 +127,7 @@ movieContainer.addEventListener("click", function (event) {
 
 
 //(5-1) 모달 열고 닫기
-const modal = document.querySelector(".modal");
-const modalOpenBtn = document.querySelector(".modal-btn");
-const modalCloseBtn = document.querySelector(".close-btn");
-const toggleModal = function () {
-  modal.classList.toggle("hide");
-};
+//<---------- ui.js : (modal, modalOpenBtn, modalCloseBtn, toggleModal)---------->
 
 modalCloseBtn.addEventListener("click", function () {
   toggleModal();
