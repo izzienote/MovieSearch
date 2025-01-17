@@ -24,3 +24,14 @@
 [Image] [img 주소가 왜 "/asdklfjasldkf.jpg" 인거지?](https://izzie-note.tistory.com/101)
 
 [Css_Grid 반응형] [❓grid 안으로 카드가 왜 안들어가지, createElements랑 append로 다시 바꿔보기](https://izzie-note.tistory.com/102)
+
+[Modal] [‼모달창 문제발생(1) 안에 들어가야할 내용이 밖에?😱](https://izzie-note.tistory.com/103)
+
+[Modal] [모달창 문제발생(2) 버튼을 클릭해서 여는게 아니고, 리스트된 카드를 선택해야 열리도록 하는거였잖아?!](https://izzie-note.tistory.com/104)
+
+[Modal] [모달창 문제발생(3) 상세페이지에 맞는 ID를 어떻게 가져오지?🤔](https://izzie-note.tistory.com/105)
+
+[Modal] [모달창 문제발생(4) 빈곳을 클릭했는데, 모달창이 팝업된다?!](https://izzie-note.tistory.com/106)
+
+[리팩토링] [async, await 와 try, catch 적용으로 비동기fetch를 동기로 만들어보자](https://izzie-note.tistory.com/107)
+
